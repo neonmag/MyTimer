@@ -21,7 +21,7 @@ namespace MyTimer
         {
             currentTime = DateTime.Now.ToLocalTime();
             label4.Text = DateTime.Now.ToLongTimeString();
-            this.Text = Convert.ToString(Convert.ToInt16(currentTime.Second - myTime.Second) * 1000);
+            this.Text = (currentTime - myTime).TotalMilliseconds.ToString();
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
