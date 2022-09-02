@@ -4,7 +4,6 @@ namespace MyTimer
     {
         private static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
         DateTime myTime = new DateTime();
-        DateTime currentTime = new DateTime();
         public Form1()
         {
             InitializeComponent();
@@ -12,16 +11,14 @@ namespace MyTimer
             myTimer.Start();
             this.Text = "0";
             myTime = DateTime.Now.ToLocalTime();
-            currentTime = DateTime.Now.ToLocalTime();
             label1.Text = DateTime.Now.ToLongTimeString();
             label4.Text = DateTime.Now.ToLongTimeString();
             myTimer.Tick += new EventHandler(CheckTime);
         }
         private void CheckTime(object vObj, EventArgs e)
         {
-            currentTime = DateTime.Now.ToLocalTime();
             label4.Text = DateTime.Now.ToLongTimeString();
-            this.Text = (currentTime - myTime).TotalMilliseconds.ToString();
+            this.Text = (DateTime.Now - myTime).TotalMilliseconds.ToString();
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
